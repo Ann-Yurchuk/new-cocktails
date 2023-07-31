@@ -1,4 +1,4 @@
-<script setup></script>
+<!-- <script setup></script>
 
 <template>
     CocktailRandom
@@ -6,4 +6,4 @@
 
 <style lang="scss" scoped>
 @import "../assets/scss/index.scss";
-</style>
+</style> -->
