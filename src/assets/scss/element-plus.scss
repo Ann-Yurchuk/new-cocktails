@@ -1,0 +1,9 @@
+@import "./variables.scss";
+
+.select .el-input__wrapper {
+  background-color: $background;
+}
+
+.select .el-input__inner {
+  color: $text;
+}
