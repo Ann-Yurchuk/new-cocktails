@@ -1,4 +1,5 @@
 <script setup>
+
 const props = defineProps({
     cocktail: {
         type: Object,
@@ -32,8 +33,11 @@ const props = defineProps({
 }
 
 .name {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     letter-spacing: 0.1em;
     padding-top: 15px;
-    text-align: center;
 }
 </style>

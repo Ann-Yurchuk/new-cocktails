@@ -5,6 +5,7 @@ import { INGREDIENTS_URL, COCKTAILS_BY_INGREDIENTS_URL } from "../constants";
 export const useRootStore = defineStore("root", {
   state: () => ({
     ingredients: [],
+    ingredient: null,
     cocktails: [],
   }),
   actions: {
@@ -17,6 +18,9 @@ export const useRootStore = defineStore("root", {
         `${COCKTAILS_BY_INGREDIENTS_URL}${ingredient}`
       );
       this.cocktails = data?.data?.drinks;
+    },
+    setIngredient(value) {
+      this.ingredient = value;
     },
   },
 });

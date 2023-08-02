@@ -1,31 +1,36 @@
 <script setup>
-import { ref } from "vue";
+import { storeToRefs } from "pinia";
 import AppLayout from "../components/AppLayout.vue";
 import CocktailThumb from "../components/CocktailThumb.vue"
 import { useRootStore } from "../stores/root";
-import { storeToRefs } from "pinia";
 
 const rootStore = useRootStore();
 rootStore.getIngredients();
 
-const { ingredients, cocktails } = storeToRefs(rootStore);
-const ingredient = ref(null);
+const { ingredients, ingredient, cocktails } = storeToRefs(rootStore);
 
 function getCocktails() {
-  rootStore.getCocktails(ingredient.value);
+  rootStore.getCocktails(rootStore.ingredient);
+}
+
+function removeIngredient() {
+  rootStore.setIngredient(null)
 }
 </script>
 
 <template>
-  <AppLayout imgUrl="/src/assets/img/bg-1.jpg">
+  <AppLayout imgUrl="/src/assets/img/bg_1.jpg" :backFunc="removeIngredient" :is-back-button-visible="!!ingredient">
     <div class="wrapper">
       <div v-if="!ingredient || !cocktails" class="info">
         <div class="title">Choose your drink</div>
         <div class="line"></div>
         <div class="select-wrapper">
-          <el-select v-model="ingredient" 
+          <el-select v-model="rootStore.ingredient" 
             placeholder="Choose main ingredient" 
-            size="large" class="select"
+            size="large"
+            filterable 
+            allow-create
+            class="select"
             @change="getCocktails">
             <el-option v-for="item in ingredients"
             :key="item.strIngredient1" 
@@ -55,21 +60,6 @@ function getCocktails() {
 <style lang="scss" scoped>
 @import "../assets/scss/index.scss";
 
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 80px 0;
-}
-
 .title {
   margin-top: 100px;
 }
@@ -81,7 +71,6 @@ function getCocktails() {
 .select {
   width: 220px;
 }
-
 .text {
   max-width: 516px;
   padding-top: 50px;
@@ -98,7 +87,6 @@ function getCocktails() {
 .cocktails {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   align-items: flex-start;
   gap: 38px;
   width: 436px;
