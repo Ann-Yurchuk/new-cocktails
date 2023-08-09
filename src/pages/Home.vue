@@ -16,10 +16,12 @@ function getCocktails() {
 function removeIngredient() {
   rootStore.setIngredient(null)
 }
+
+    
 </script>
 
 <template>
-  <AppLayout imgUrl="src/assets/img/dawa-cocktail.png" :backFunc="removeIngredient" :is-back-button-visible="!!ingredient">
+  <AppLayout imgUrl="src/assets/img/dawa-cocktail.jpg" :backFunc="removeIngredient" :is-back-button-visible="!!ingredient">
     <div class="wrapper">
       <div v-if="!ingredient || !cocktails" class="info">
         <div class="title">Choose your drink</div>
