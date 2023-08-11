@@ -17,24 +17,23 @@ function removeIngredient() {
   rootStore.setIngredient(null)
 }
 
-    
 </script>
 
 <template>
-  <AppLayout imgUrl="src/assets/img/dawa-cocktail.jpg" :backFunc="removeIngredient" :is-back-button-visible="!!ingredient">
+  <!-- <AppLayout image="/src/assets/img/dawa-cocktail.jpg" :backFunc="removeIngredient" :is-back-button-visible="!!ingredient"> -->
+  <AppLayout :backFunc="removeIngredient" :is-back-button-visible="!!ingredient">
     <div class="wrapper">
       <div v-if="!ingredient || !cocktails" class="info">
         <div class="title">Choose your drink</div>
         <div class="line"></div>
         <div class="select-wrapper">
           <el-select v-model="rootStore.ingredient" 
-            placeholder="Choose main ingredient" 
-            size="large"
-            filterable 
-            allow-create
-            class="select"
-            @change="getCocktails">
-            <el-option v-for="item in ingredients"
+          placeholder="Choose main ingredient" 
+          size="large" 
+          filterable
+          allow-create class="select" 
+           @change="getCocktails">
+            <el-option v-for="item in ingredients" 
             :key="item.strIngredient1" 
             :label="item.strIngredient1"
             :value="item.strIngredient1" />
@@ -50,7 +49,7 @@ function removeIngredient() {
         <div class="title">COCKTAILS WITH {{ ingredient }}</div>
         <div class="line"></div>
         <div class="cocktails">
-          <CocktailThumb v-for="cocktail in cocktails"
+          <CocktailThumb v-for="cocktail in cocktails" 
           :key="cocktail.idDrink" 
           :cocktail="cocktail" />
         </div>
@@ -73,6 +72,7 @@ function removeIngredient() {
 .select {
   width: 220px;
 }
+
 .text {
   max-width: 516px;
   padding-top: 50px;

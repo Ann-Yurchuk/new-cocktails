@@ -5,9 +5,9 @@ import { Back } from "@element-plus/icons-vue";
 import { ROUTES_PATHS } from "../constants";
 
 const props = defineProps({
-    imgUrl: {
-        type: String,
-    },
+    // image: {
+    //     type: String,
+    // },
     backFunc: {
         type: Function,
     },
@@ -15,7 +15,7 @@ const props = defineProps({
         type: Boolean,
         default: true,
     },
-});
+})
 
 const route = useRoute();
 const router = useRouter();
@@ -33,11 +33,14 @@ function goBack() {
     props.backFunc ? props.backFunc() : router.go(-1)
 
 }
+
+
 </script>
 
 <template>
     <div class="root">
-        <div :style="`background-image: url(${imgUrl})`" class="img"></div>
+        <!-- <div :style="`background-image: url(${image})`" class="img"></div> -->
+        <img src="../assets/img/dawa-cocktail.jpg" alt="Cocktail" class="img" />
         <div class="main">
             <div class="btns">
                 <el-button v-if="isBackButtonVisible" type="primary" :icon="Back" circle class="back" @click="goBack" />
