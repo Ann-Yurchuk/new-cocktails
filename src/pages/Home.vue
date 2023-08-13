@@ -20,7 +20,7 @@ function removeIngredient() {
 </script>
 
 <template>
-  <AppLayout image="/src/assets/img/dawa-cocktail.jpg" :backFunc="removeIngredient" :is-back-button-visible="!!ingredient">
+  <AppLayout image="https://res.cloudinary.com/dtwijsbjj/image/upload/v1691927563/dawa_cocktail_vvnjk7.jpg" :backFunc="removeIngredient" :is-back-button-visible="!!ingredient">
     <div class="wrapper">
       <div v-if="!ingredient || !cocktails" class="info">
         <div class="title">Choose your drink</div>

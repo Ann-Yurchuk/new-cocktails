@@ -38,7 +38,7 @@ getCocktail();
 
 <template>
     <div v-if="cocktail" class="wrap">
-        <AppLayout :imgUrl="cocktail.strDrinkThumb">
+        <AppLayout :image="cocktail.strDrinkThumb">
             <div class="wrapper">
                 <div class="info">
                     <div class="title">{{ cocktail.strDrink }}</div>
